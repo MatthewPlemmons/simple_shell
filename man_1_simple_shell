@@ -1,0 +1,17 @@
+.TH man 1 "13 Dec 2016" "0.1" "simple_shell man page"
+.SH NAME
+.B still thinking of a good name -
+like sh but way more simple
+.SH SYNOPSIS
+fill in here please;
+.SH DESCRIPTION
+Recreation of the shell as a project for Holberton School.
+.SH OPTIONS
+.B n/a fill in here
+.br
+.SH SEE ALSO
+.I fill in here
+.SH BUGS
+Please see list:
+.SH AUTHOR
+Matthew Plemmons, and Stuart Fosse
