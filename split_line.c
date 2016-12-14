@@ -2,9 +2,9 @@
 
 /*
  * split_line - splits the line in segments.
- * Description: temp replacment for getline(). if buffer is filled, reallocate
- * more memory to buffer.
+ * Description: 
  *
+ * @line: sentence to be split.
  * @return: returns an array of segments.
  */
 char **split_line(char *line)
@@ -21,27 +21,27 @@ char **split_line(char *line)
 		fprintf(stderr, "$: allocation error\n");
 		exit(EXIT_FAILURE);
 	}
-	while (1)
+
+	token = strtok(line, 64);
+	while (token != NULL)
 	{
-		c = getchar();
-		if (c == EOF || c == '\n')
-		{
-			buffer[position] = '\0';
-			return buffer;
-		}
-		else
-			buffer[position] = c;
+		tokens[position] = token;
 		position++;
 
 		if (position >= bufsize)
 		{
-			bufsize = bufsize + 1024;
-			buffer = realloc(buffer, buffsize);
-			if (!buffer)
+			bufsize = bufsize + 64;
+			tokens_backup = tokens;
+			tokens = realloc(tokens, bufsize * sizeof(char*));
+			if (!tokens)
 			{
+				free(tokens_backup);
 				fprintf(stderr, "$: allocation error\n");
 				exit(EXIT_FAILURE);
 			}
 		}
+		token = strtok(NULL, 64);
 	}
+	tokens[position] = NULL;
+	return (tokens);
 }

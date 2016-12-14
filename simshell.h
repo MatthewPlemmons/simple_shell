@@ -7,8 +7,14 @@
 #include <string.h>
 #include <sys/wait.h>
 
-void main_loop(void);
+int _cd(char **args);
+int _help(char **args);
+int _exit(char **args);
+int _execute(char **args);
+int _launch(char ** args);
 char *read_line(void);
 char **split_line(char *line);
+void main_loop(void);
+
 
 #endif
