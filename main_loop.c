@@ -11,11 +11,7 @@ void main_loop(void)
 	char **args;
 	int status;
 
-	printf("Welcome to Matthew and Stuat's recreation
-	of a simple shell\n");
-
-	do
-	{
+	do {
 		printf("$ ");
 		line = read_line();
 		args = split_line(line);
@@ -24,5 +20,5 @@ void main_loop(void)
 		free(line);
 		free(args);
 		
-	}while (status);
+	} while (status);
 }

@@ -1,5 +1,7 @@
 #include "simshell.h"
 
+#define DELIM " \t\r\n\a"
+
 /*
  * split_line - splits the line in segments.
  * Description: 
@@ -22,7 +24,7 @@ char **split_line(char *line)
 		exit(EXIT_FAILURE);
 	}
 
-	token = strtok(line, 64);
+	token = strtok(line, DELIM);
 	while (token != NULL)
 	{
 		tokens[position] = token;
@@ -40,7 +42,7 @@ char **split_line(char *line)
 				exit(EXIT_FAILURE);
 			}
 		}
-		token = strtok(NULL, 64);
+		token = strtok(NULL, DELIM);
 	}
 	tokens[position] = NULL;
 	return (tokens);

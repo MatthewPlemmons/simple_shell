@@ -35,7 +35,7 @@ char *read_line(void)
 		if (position >= bufsize)
 		{
 			bufsize = bufsize + 1024;
-			buffer = realloc(buffer, buffsize);
+			buffer = realloc(buffer, bufsize);
 			if (!buffer)
 			{
 				fprintf(stderr, "$: allocation error\n");
