@@ -1,21 +1,22 @@
 #include "simshell.h"
 
 /*
- * read_line - gets input from stdin.
+ * split_line - splits the line in segments.
  * Description: temp replacment for getline(). if buffer is filled, reallocate
  * more memory to buffer.
  *
- * @return: returns the line it read from stdin.
+ * @return: returns an array of segments.
  */
-char *read_line(void)
+char **split_line(char *line)
 {
-	int bufsize, position, c;
-	char *buffer;
+	int bufsize, position;
+	char **tokens, **tokens_backup, *token;
 	
-	bufsize = 1024;
-	buffer = malloc(sizeof(char) * bufsize);
+	bufsize = 64;
+	position = 0;
+	tokens = malloc(bufsize * sizeof(char*));
 
-	if (!buffer)
+	if (!tokens)
 	{
 		fprintf(stderr, "$: allocation error\n");
 		exit(EXIT_FAILURE);
