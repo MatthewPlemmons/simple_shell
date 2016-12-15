@@ -9,7 +9,7 @@
 
 int _cd(char **args);
 int _help(char **args);
-int _exit(char **args);
+int my_exit(char **args);
 int _launch(char ** args);
 int _execute(char **args);
 char *read_line(void);

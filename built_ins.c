@@ -8,7 +8,7 @@
 /**
  * declare functions
  *
- * int _cd(char **args);
+ * int my_cd(char **args);
  * int _help(char **args);
  * int _exit(char **args);
  */
@@ -76,12 +76,12 @@ int _help(char **args)
 }
 
 /*
- * _exit - built in command to exit shell.
+ *my_exit - built in command to exit shell.
  *
  * @args: list of arguments
  * @return: always returns 0, to exit shell.
  */
-int _exit(char **args)
+int my_exit(char **args)
 {
 	return (0);
 }
