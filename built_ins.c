@@ -10,7 +10,7 @@
  *
  * int my_cd(char **args);
  * int _help(char **args);
- * int _exit(char **args);
+ * int my_exit(char **args);
  */
 /**
  * list of built ins
@@ -26,7 +26,7 @@ int (*builtin_func[]) (char **) =
 {
 	&_cd,
 	&_help,
-	&_exit
+	&my_exit
 };
 
 int num_builtins()
