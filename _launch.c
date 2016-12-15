@@ -28,7 +28,7 @@ int _launch(char **args)
 		do
 		{
 			waitpid(pid, &status, WUNTRACED);
-		} while (!WIFEXITED(status) && !WIFESIGNALED(status));
+		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
 	return (1);
 }

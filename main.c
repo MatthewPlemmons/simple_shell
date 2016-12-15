@@ -2,6 +2,7 @@
 
 /*
  * main - main file to start shell
+ *
  * @argc: argument count.
  * @argv: argument vector.
  * @return: returns exit status.

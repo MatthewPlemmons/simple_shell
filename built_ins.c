@@ -4,14 +4,6 @@
  * The following is a list of buit ins and thier functions.
  */
 
-
-/**
- * declare functions
- *
- * int my_cd(char **args);
- * int _help(char **args);
- * int my_exit(char **args);
- */
 /**
  * list of built ins
  */
@@ -84,4 +76,26 @@ int _help(char **args)
 int my_exit(char **args)
 {
 	return (0);
+}
+
+/*
+ * _execute - looks for built ins or launches program.
+ * Description: 
+ *
+ * @args: list of arguments
+ * @return: returns 1 to continue running, 0 if exit.
+ **/
+int _execute(char **args)
+{
+	int i;
+
+	if (args[0] == NULL)
+		return (1);
+
+	for (i = 0; i < num_builtins(); i++)
+	{
+	if (strcmp(args[0], builtin_str[i]) == 0)
+		return (*builtin_func[i])(args);
+	}
+	return _launch(args);
 }
