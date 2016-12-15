@@ -16,8 +16,8 @@ int _execute(char **args)
 
 	for (i = 0; i < num_builtins(); i++)
 	{
-		if (strcmp(args[0], bui;tin_str[i]) == 0)
-			return(*nuiltin_func[i])(args);
+		if (strcmp(args[0], builtin_str[i]) == 0)
+			return(*builtin_func[i])(args);
 	}
 	return _launch(args);
 }

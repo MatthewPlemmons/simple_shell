@@ -7,11 +7,11 @@
 
 /**
  * declare functions
+ *
+ * int _cd(char **args);
+ * int _help(char **args);
+ * int _exit(char **args);
  */
-int _cd(char **args);
-int _help(char **args);
-int _exit(char **args);
-
 /**
  * list of built ins
  */

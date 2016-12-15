@@ -7,7 +7,7 @@
  */
 void main_loop(void)
 {
-	char *line
+	char *line;
 	char **args;
 	int status;
 
