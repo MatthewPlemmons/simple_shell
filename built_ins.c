@@ -22,7 +22,7 @@ char *builtin_str[] =
 	"exit"
 };
 
-int (*builtin_func[]) (char**) = 
+int (*builtin_func[]) (char **) = 
 {
 	&_cd,
 	&_help,
