@@ -12,6 +12,7 @@ char *read_line(void)
 	int bufsize, position, c;
 	char *buffer;
 
+	
 	position = 0;
 	bufsize = 1024;
 	buffer = malloc(sizeof(char) * bufsize);
