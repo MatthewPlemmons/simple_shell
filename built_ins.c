@@ -1,31 +1,4 @@
-#include "simshell.h"
-
-/**
- * The following is a list of buit ins and thier functions.
- */
-
-/**
- * list of built ins
- */
-char *builtin_str[] = 
-{
-	"cd",
-	"help",
-	"exit"
-};
-
-int (*builtin_func[]) (char **) = 
-{
-	&_cd,
-	&_help,
-	&my_exit
-};
-
-int num_builtins()
-{
-	return sizeof(builtin_str) / sizeof(char *);
-}
-
+#include "shell.h"
 
 /*
  * _cd - built in command to change directory.
@@ -53,27 +26,34 @@ int _cd(char **args)
  * @args: list of arguments
  * @return: always returns 1, to continue to execute.
  */
-int _help(char **args)
+int _help(void)
 {
-	int i;
+	int i, n;
 
-	printf("Please see list of built in commands:\n");
+	builtin_t builtins[] = {
+		{"cd", _cd},
+		{"help", _help},
+		{"exit", _exit},
+		{"env", _env}
+	};
 
-	for (i = 0; i < num_builtins(); i++)
+	n = N_BUILTINS(builtins, builtins[0]);
+	printf("Available built-in commands:\n");
+	for (i = 0; i < n; i++)
 	{
-		printf(" %s\n", builtin_str[i]);
+		printf(" %s\n", builtins[i].name);
 	}
 
 	return (1);
 }
 
 /*
- *my_exit - built in command to exit shell.
+ * _exit - built in command to exit shell.
  *
  * @args: list of arguments
  * @return: always returns 0, to exit shell.
  */
-int my_exit(char **args)
+int _exit(void)
 {
 	return (0);
 }
@@ -87,15 +67,23 @@ int my_exit(char **args)
  **/
 int _execute(char **args)
 {
-	int i;
+	int i, n;
+
+	builtin_t builtins[] = {
+		{"cd", _cd},
+		{"help", _help},
+		{"exit", _exit},
+		{"env", _env}
+	};
 
 	if (args[0] == NULL)
 		return (1);
 
-	for (i = 0; i < num_builtins(); i++)
+	n = N_BUILTINS(builtins, builtins[0]);
+	for (i = 0; i < n; i++)
 	{
-	if (strcmp(args[0], builtin_str[i]) == 0)
-		return (*builtin_func[i])(args);
+		if (strcmp(args[0], builtins[i].name) == 0)
+			return (builtins[i].f(args));
 	}
 	return _launch(args);
 }

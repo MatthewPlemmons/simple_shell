@@ -1,11 +1,12 @@
-#include "simshell.h"
+#include "shell.h"
 
-/*
- * main_loop - main loop to continue untill user enters "exit"
+/**
+ * main - shell for taking user commands
  *
- * @return: returns status to tell main func to exit or not.
+ * Return: int 0, upon exit.
  */
-void main_loop(void)
+
+int main(void)
 {
 	char *line;
 	char **args;
@@ -19,6 +20,7 @@ void main_loop(void)
 
 		free(line);
 		free(args);
-		
+
 	} while (status);
+	return (0);
 }
