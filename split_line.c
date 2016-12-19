@@ -1,4 +1,4 @@
-#include "simshell.h"
+#include "shell.h"
 
 #define DELIM " \t\r\n\a"
 
@@ -13,7 +13,7 @@ char **split_line(char *line)
 {
 	int bufsize, position;
 	char **tokens, **tokens_backup, *token;
-	
+
 	bufsize = 64;
 	position = 0;
 	tokens = malloc(bufsize * sizeof(char*));
