@@ -10,10 +10,8 @@
 #include <sys/wait.h>
 
 /**
- * struct builtins - stores pointers to builtin functions.
- *
+ * struct builtin_t - stores pointers to builtin functions
  */
-
 typedef struct builtin_t {
 	char *name;
 	int (*f)();
@@ -22,7 +20,6 @@ typedef struct builtin_t {
 
 extern char **environ;
 
-int number_builtins(builtin_t b);
 int _cd(char **args);
 int _help(void);
 int _exit(void);
