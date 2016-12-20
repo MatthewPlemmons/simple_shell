@@ -9,6 +9,11 @@
 #include <string.h>
 #include <sys/wait.h>
 
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <dirent.h>
+
+
 /**
  * struct builtin_t - stores pointers to builtin functions
  */
@@ -22,8 +27,9 @@ extern char **environ;
 
 int _cd(char **args);
 int _help(void);
-int _exit(void);
+int my_exit(void);
 int _env(void);
+int _ls(int argc, char* argv[]);
 int _launch(char **args);
 int _execute(char **args);
 char *read_line(void);
