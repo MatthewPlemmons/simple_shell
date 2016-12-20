@@ -9,11 +9,6 @@
 #include <string.h>
 #include <sys/wait.h>
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <dirent.h>
-
-
 /**
  * struct builtin_t - stores pointers to builtin functions
  */
