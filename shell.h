@@ -24,7 +24,6 @@ int _cd(char **args);
 int _help(void);
 int my_exit(void);
 int _env(void);
-int _ls(int argc, char* argv[]);
 int _launch(char **args);
 int _execute(char **args);
 char *read_line(void);
