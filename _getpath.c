@@ -6,8 +6,6 @@ int parsepath(char *p)
 	int i, n_dirs;
 	char *dirs, *cur, *tmp;
 
-	/* Get number of directories in PATH based on how many
-	   ':' seperators are present */
 	n_dirs = 0;
 	for (i = 0; p[i]; i++)
 		if (p[i] == ':')
@@ -18,28 +16,27 @@ int parsepath(char *p)
 	if (!dirs)
 	{
 		perror("Memory allocation failed");
-		return (0);
+		return (1);
 	}
 
-	/* This ain't workin. Rewrite to run for n_dirs,
-	   then iterate over p until ':', then use iterator
-	   j of that loop to allocate mem for dir[i], THEN
-	   strncpy() j bytes into the new space. */
-	cur = dirs;
-	for (i = 0; *p; i++)
+
+	for (i = 0; i < n_dirs; i++)
 	{
-		tmp = cur;
-		while ((*cur++ = *p++))
+		for (j = 0; p[j]; j++)
 		{
-			if (*p == ':')
+			if (p[j] == ':')
 			{
-				*cur = '\0';
-				dirs[i] = *tmp;
+				dir[i] = malloc(sizeof(j));
+				if (!dir[i])
+				{
+					perror("Memory allocation failed");
+					return (1);
+				}
+				strncpy(dir[i], p, j);
 				break;
 			}
 		}
 	}
-	dirs[i] = *tmp;
 
 	for (i = 0; dirs[i]; i++)
 		printf("parsepath: %i\n", dirs[i]);
