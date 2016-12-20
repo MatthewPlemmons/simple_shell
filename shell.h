@@ -22,7 +22,7 @@ extern char **environ;
 
 int _cd(char **args);
 int _help(void);
-int _exit(void);
+int sh_exit(void);
 int _env(void);
 int _launch(char **args);
 int _execute(char **args);
