@@ -10,7 +10,7 @@
 char *read_line(void)
 {
 	int bufsize, position, c;
-	char *buffer;
+	char *buffer, *temp;
 
 	position = 0;
 	bufsize = 1024;
@@ -35,8 +35,13 @@ char *read_line(void)
 
 		if (position >= bufsize)
 		{
+			temp = malloc(sizeof(char) * bufsize);
+			temp = buffer;
 			bufsize = bufsize + 1024;
-			buffer = realloc(buffer, bufsize);
+			free(buffer);
+			buffer = malloc(sizeof(char) * bufsize);
+			buffer = temp;
+			free(temp);
 			if (!buffer)
 			{
 				fprintf(stderr, "$: allocation error\n");
