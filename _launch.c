@@ -1,10 +1,10 @@
 #include "shell.h"
 
-/*
+/**
  * _launch - launch a program and wait for it.
  *
  * @args: list of arguments
- * @return: returns 1 to continue running.
+ * Return: returns 1 to continue running.
  */
 int _launch(char **args)
 {
@@ -25,8 +25,7 @@ int _launch(char **args)
 	}
 	else
 	{
-		do
-		{
+		do {
 			waitpid(pid, &status, WUNTRACED);
 		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
