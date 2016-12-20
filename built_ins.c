@@ -33,7 +33,7 @@ int _help(void)
 	builtin_t builtins[] = {
 		{"cd", _cd},
 		{"help", _help},
-		{"exit", sh_exit},
+		{"exit", my_exit},
 		{"env", _env}
 	};
 
@@ -48,12 +48,12 @@ int _help(void)
 }
 
 /*
- * _exit - built in command to exit shell.
+ * my_exit - built in command to exit shell.
  *
  * @args: list of arguments
  * @return: always returns 0, to exit shell.
  */
-int sh_exit(void)
+int my_exit(void)
 {
 	return (0);
 }
@@ -72,7 +72,7 @@ int _execute(char **args)
 	builtin_t builtins[] = {
 		{"cd", _cd},
 		{"help", _help},
-		{"exit", sh_exit},
+		{"exit", my_exit},
 		{"env", _env}
 	};
 
