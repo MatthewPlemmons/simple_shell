@@ -17,8 +17,17 @@ typedef struct builtin_t {
 	int (*f)();
 } builtin_t;
 
+typedef struct pathdir_t {
+	char *dir;
+	struct pathdir_t *next;
+} pathdir_t;
 
 extern char **environ;
+
+
+int parsepath(char *p);
+int getpath(void);
+
 
 int _cd(char **args);
 int _help(void);

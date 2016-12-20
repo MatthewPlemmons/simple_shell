@@ -12,7 +12,8 @@ int main(void)
 	char **args;
 	int status;
 
-		printf("Welcome to our attempt at a simple shell.\n\n");
+	printf("Welcome to our attempt at a simple shell.\n\n");
+	getpath();
 	do {
 		printf(">$ ");
 		line = read_line();
