@@ -6,16 +6,24 @@
  * @args: list of arguments
  * Return: returns 1 to continue running.
  */
-int _launch(char **args)
+int _launch(char **args, char **envp)
 {
+	char **path;
 	pid_t pid;
 	int status;
 
+
+	/* in order for execve to run external functions it must
+	   be given full path of the file */
+	/*
+	path = getpath();
+	file = findfile(args[0], path);
+	*/
 	pid = fork();
 	if (pid == 0)
 	{
-		if (execv(args[0], args) == -1)
-			perror("$ ");
+		if (execve(args[0], args, envp) == -1)
+			perror("exevce failed");
 
 		exit(EXIT_FAILURE);
 	}
