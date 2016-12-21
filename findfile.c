@@ -1,14 +1,24 @@
-#include "shell.h"
 
-/**
- * findfile - look through the directories taken from PATH to find file.
- * @dirs: pointer array for path directories.
- * @args: contains file/command to find.
- * Returns: 
- */
-int findfile(char **dirs, char **args)
+char *findfile()
 {
-	opendir();
-	readdir();
-	closedir();
+	int i;
+
+	for (i = 0; dirs[i]; i++)
+	{
+		size = _strlen(dirs[i]);
+		d_path = malloc(sizeof(char) * size);
+		fullpath = _strcat(dirs[i], args[0]);
+		_strcpy(d_path, fullpath);
+
+		if (stat(fullpath) == -1)
+		{
+			continue;
+		}
+		else
+		{
+			printf("file found.");
+			return (fullpath);
+		}
+	}
+	return (NULL);
 }
