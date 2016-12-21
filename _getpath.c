@@ -39,6 +39,7 @@ int parsepath(char *p)
 					perror("Memory allocation failed");
 					return (1);
 				}
+				curr++;
 				strncpy(dirs[i], tmp, j);
 				break;
 			}
