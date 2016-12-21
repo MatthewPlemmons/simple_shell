@@ -2,12 +2,12 @@
 
 #define DELIM " \t\r\n\a"
 
-/*
+/**
  * split_line - splits the line in segments.
- * Description: 
+ * Description:
  *
  * @line: sentence to be split.
- * @return: returns an array of segments.
+ * Return: returns an array of segments.
  */
 char **split_line(char *line)
 {
@@ -16,7 +16,7 @@ char **split_line(char *line)
 
 	bufsize = 64;
 	position = 0;
-	tokens = malloc(bufsize * sizeof(char*));
+	tokens = malloc(bufsize * sizeof(char *));
 
 	if (!tokens)
 	{
@@ -33,8 +33,11 @@ char **split_line(char *line)
 		if (position >= bufsize)
 		{
 			bufsize = bufsize + 64;
+			tokens_backup = malloc(bufsize * sizeof(char *));
 			tokens_backup = tokens;
-			tokens = realloc(tokens, bufsize * sizeof(char*));
+			free(tokens);
+			tokens = malloc(bufsize * sizeof(char *));
+			tokens = tokens_backup;
 			if (!tokens)
 			{
 				free(tokens_backup);

@@ -11,8 +11,13 @@
 
 /**
  * struct builtin_t - stores pointers to builtin functions
+ *
+ * @name:
+ * @f:
+ *
  */
-typedef struct builtin_t {
+typedef struct builtin_t
+{
 	char *name;
 	int (*f)();
 } builtin_t;

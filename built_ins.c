@@ -1,10 +1,10 @@
 #include "shell.h"
 
-/*
+/**
  * _cd - built in command to change directory.
  *
  * @args: list of arguments, 0 is "cd", 1 is the directory.
- * @return: always returns 1, to continue to execute.
+ * Return: always returns 1, to continue to execute.
  */
 int _cd(char **args)
 {
@@ -20,11 +20,10 @@ int _cd(char **args)
 	return (1);
 }
 
-/*
+/**
  * _help - built in command to change directory.
  *
- * @args: list of arguments
- * @return: always returns 1, to continue to execute.
+ * Return: always returns 1, to continue to execute.
  */
 int _help(void)
 {
@@ -47,24 +46,22 @@ int _help(void)
 	return (1);
 }
 
-/*
+/**
  * my_exit - built in command to exit shell.
  *
- * @args: list of arguments
- * @return: always returns 0, to exit shell.
+ * Return: always returns 0, to exit shell.
  */
 int my_exit(void)
 {
 	return (0);
 }
 
-/*
+/**
  * _execute - looks for built ins or launches program.
- * Description: 
  *
  * @args: list of arguments
- * @return: returns 1 to continue running, 0 if exit.
- **/
+ * Return: returns 1 to continue running, 0 if exit.
+ */
 int _execute(char **args)
 {
 	int i, n;
@@ -85,5 +82,5 @@ int _execute(char **args)
 		if (strcmp(args[0], builtins[i].name) == 0)
 			return (builtins[i].f(args));
 	}
-	return _launch(args);
+	return (_launch(args));
 }
