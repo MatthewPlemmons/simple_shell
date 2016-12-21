@@ -1,7 +1,18 @@
 #include "shell.h"
 
+/*
+void _freearr(char **dirs)
+{
+	while (*dirs++)
+	{
+		free(*dirs);
+	}
+	free(dirs);
+}
+*/
 
-int parsepath(char *p)
+
+char **parsepath(char *p)
 {
 	int i, j, n_dirs;
 	char **dirs;
@@ -13,46 +24,44 @@ int parsepath(char *p)
 			n_dirs++;
 	n_dirs++;
 
-	dirs = malloc(sizeof(char *) * n_dirs);
+	dirs = malloc(sizeof(char *) * n_dirs + 1);
 	if (!dirs)
 	{
 		perror("Memory allocation failed");
-		return (1);
+		exit(EXIT_FAILURE);
 	}
 
 
 	curr = p;
-	/* get the curr pointer past the PATH variable name in str */
 	while (*curr++ != '=')
 		;
 
 	for (i = 0; i < n_dirs; i++)
 	{
 		tmp = curr;
-		for (j = 0; *curr++; j++)
+		for (j = 1; *curr++; j++)
 		{
-			if (*curr == ':')
+			if (*curr == ':' || *curr == '\0')
 			{
-				dirs[i] = malloc(sizeof(char) * j);
+				dirs[i] = malloc(sizeof(char) * j + 1);
 				if (!dirs[i])
 				{
 					perror("Memory allocation failed");
-					return (1);
+					exit(EXIT_FAILURE);
 				}
 				curr++;
 				strncpy(dirs[i], tmp, j);
+				dirs[i][j] = '\0';
 				break;
 			}
 		}
 	}
+	dirs[i] = NULL;
 
-	for (i = 0; dirs[i]; i++)
-		printf("parsepath: %s\n", dirs[i]);
-	free(dirs);
-	return (1);
+	return (dirs);
 }
 
-int getpath(void)
+char **getpath(void)
 {
 	unsigned int i, j, size;
 	char ispath[4];
@@ -64,16 +73,13 @@ int getpath(void)
 		for (j = 0; j < size; j++)
 			ispath[j] = environ[i][j];
 
+		/* replace with custom implementaion of strcmp */
 		if (strcmp(ispath, "PATH") == 0)
 		{
 			path = environ[i];
 			return(parsepath(path));
 		}
-		if (!environ[i + 1])
-		{
-			perror("PATH not found");
-			return (1);
-		}
 	}
-	return (0);
+	perror("PATH not found");
+	return (NULL);
 }
