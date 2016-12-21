@@ -20,7 +20,12 @@ int parsepath(char *p)
 		return (1);
 	}
 
+
 	curr = p;
+	/* get the curr pointer past the PATH variable name in str */
+	while (*curr++ != '=')
+		;
+
 	for (i = 0; i < n_dirs; i++)
 	{
 		tmp = curr;
