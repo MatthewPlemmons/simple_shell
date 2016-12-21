@@ -8,14 +8,22 @@
  */
 int _cd(char **args)
 {
+	char buffer[PATH_MAX];
+
 	if (args[1] == NULL)
 		fprintf(stderr, "$: expected argument to \"cd\"\n");
 	else
 	{
-		if (chdir(args[1]) != 0)
+		if (chdir(args[1]) == 0)
 		{
-			perror("$ ");
+			printf("\nDirectory changed! Now in:\n");
+			if (getcwd(buffer, PATH_MAX) == NULL)
+				perror("unable to print directory path");
+			else
+				printf("%s\n", buffer);
 		}
+		else
+			perror("chdir failed");
 	}
 	return (1);
 }
@@ -62,7 +70,7 @@ int my_exit(void)
  * @args: list of arguments
  * Return: returns 1 to continue running, 0 if exit.
  */
-int _execute(char **args)
+int _execute(char **args, char **envp)
 {
 	int i, n;
 
@@ -82,5 +90,5 @@ int _execute(char **args)
 		if (strcmp(args[0], builtins[i].name) == 0)
 			return (builtins[i].f(args));
 	}
-	return (_launch(args));
+	return (_launch(args, envp));
 }

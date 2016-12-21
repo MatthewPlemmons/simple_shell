@@ -11,73 +11,66 @@ void _freearr(char **dirs)
 }
 */
 
-
-char **parsepath(char *p)
+char **arr_alloc(char *p)
 {
-	int i, j, n_dirs;
-	char **dirs;
-	char *curr, *tmp;
+	char **arr_ptrs;
+	int i, n_ptrs;
 
-	n_dirs = 0;
+	n_ptrs = 0;
 	for (i = 0; p[i]; i++)
 		if (p[i] == ':')
-			n_dirs++;
-	n_dirs++;
+			n_ptrs++;
+	n_ptrs++;
 
-	dirs = malloc(sizeof(char *) * n_dirs + 1);
-	if (!dirs)
+	arr_ptrs = malloc(sizeof(char *) * n_ptrs + 1);
+	if (!arr_ptrs)
 	{
 		perror("Memory allocation failed");
 		exit(EXIT_FAILURE);
 	}
+	arr_ptrs[n_ptrs + 1] = NULL;
+	return (arr_ptrs);
+
+}
 
 
+char **parsepath(char *p)
+{
+	int i, j, size;
+	char **dirs;
+	char *curr, *tmp;
+
+	dirs = arr_alloc(p);
+	size = sizeof(dirs) / sizeof(dirs[0]);
 	curr = p;
-	while (*curr++ != '=')
-		;
-
-	for (i = 0; i < n_dirs; i++)
+	for (i = 0; i < size; i++)
 	{
 		tmp = curr;
 		for (j = 1; *curr++; j++)
 		{
 			if (*curr == ':' || *curr == '\0')
 			{
-				dirs[i] = malloc(sizeof(char) * j + 1);
-				if (!dirs[i])
-				{
-					perror("Memory allocation failed");
-					exit(EXIT_FAILURE);
-				}
+				dirs[i] = _strndup(tmp, j);
 				curr++;
-				strncpy(dirs[i], tmp, j);
-				dirs[i][j] = '\0';
 				break;
 			}
 		}
 	}
-	dirs[i] = NULL;
-
 	return (dirs);
 }
 
 char **getpath(void)
 {
-	unsigned int i, j, size;
-	char ispath[4];
+	unsigned int i, size;
 	char *path;
 
-	size = sizeof(ispath);
+	size = _strlen("PATH=");
 	for (i = 0; environ[i]; i++)
 	{
-		for (j = 0; j < size; j++)
-			ispath[j] = environ[i][j];
-
-		/* replace with custom implementaion of strcmp */
-		if (strcmp(ispath, "PATH") == 0)
+		if (_strstr(environ[i], "PATH"))
 		{
 			path = environ[i];
-			return(parsepath(path));
+			return(parsepath(path += size));
 		}
 	}
 	perror("PATH not found");
