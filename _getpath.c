@@ -3,8 +3,9 @@
 
 int parsepath(char *p)
 {
-	int i, n_dirs;
-	char *dirs, *cur, *tmp;
+	int i, j, n_dirs;
+	char **dirs;
+	char *curr, *tmp;
 
 	n_dirs = 0;
 	for (i = 0; p[i]; i++)
@@ -19,27 +20,28 @@ int parsepath(char *p)
 		return (1);
 	}
 
-
+	curr = p;
 	for (i = 0; i < n_dirs; i++)
 	{
-		for (j = 0; p[j]; j++)
+		tmp = curr;
+		for (j = 0; *curr++; j++)
 		{
-			if (p[j] == ':')
+			if (*curr == ':')
 			{
-				dir[i] = malloc(sizeof(j));
-				if (!dir[i])
+				dirs[i] = malloc(sizeof(char) * j);
+				if (!dirs[i])
 				{
 					perror("Memory allocation failed");
 					return (1);
 				}
-				strncpy(dir[i], p, j);
+				strncpy(dirs[i], tmp, j);
 				break;
 			}
 		}
 	}
 
 	for (i = 0; dirs[i]; i++)
-		printf("parsepath: %i\n", dirs[i]);
+		printf("parsepath: %s\n", dirs[i]);
 	free(dirs);
 	return (1);
 }
