@@ -3,7 +3,7 @@
 /**
  * read_line - gets input from stdin.
  * Description: temp replacment for getline(). if buffer is filled, reallocate
- * more memory to buffer.
+ * more memory to buffer. also logs to history file.
  *
  * Return: returns the line it read from stdin.
  */
@@ -17,22 +17,20 @@ char *read_line(void)
 	buffer = malloc(sizeof(char) * bufsize);
 
 	if (!buffer)
-	{
-		fprintf(stderr, "$: allocation error\n");
 		exit(EXIT_FAILURE);
-	}
 	while (1)
 	{
 		c = getchar();
 		if (c == EOF || c == '\n')
 		{
 			buffer[position] = '\0';
+			write_history(buffer);
+			write_history("\n");
 			return (buffer);
 		}
 		else
 			buffer[position] = c;
 		position++;
-
 		if (position >= bufsize)
 		{
 			temp = malloc(sizeof(char) * bufsize);

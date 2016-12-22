@@ -1,17 +1,20 @@
 .TH man 1 "13 Dec 2016" "0.1" "simple_shell man page"
 .SH NAME
-.B still thinking of a good name -
+.B HSH Horberton simple shell -
 like sh but way more simple
 .SH SYNOPSIS
-fill in here please;
+hsh : with a few built ins. otherwise type in full path name, exp: /usr/bin/ls
 .SH DESCRIPTION
 Recreation of the shell as a project for Holberton School.
-.SH OPTIONS
-.B n/a fill in here
+.SH BUILT-INS
+.B 1. help
+.B 2. exit
+.B 3. cd
+.B 4. env
 .br
 .SH SEE ALSO
-.I fill in here
+.I execv, execve, execvp, etc.
 .SH BUGS
 Please see list:
 .SH AUTHOR
-Matthew Plemmons, and Stuart Fosse
+Matthew Plemmons, and Stuart Fosse. See AUTHORS file for more detail.
