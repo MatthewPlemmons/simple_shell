@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <fcntl.h>
 #include <string.h>
 #include <sys/wait.h>
 #include <linux/limits.h>
@@ -26,13 +27,20 @@ typedef struct builtin_t
 	int (*f)();
 } builtin_t;
 
+typedef struct pathdir_t
+{
+	char *dir;
+	struct pathdir_t *next;
+} pathdir_t;
+
 extern char **environ;
 
-
+int write_history(char *text_content);
 int _cd(char **args);
 int _help(void);
 int my_exit(void);
 int _env(void);
+int _history(void);
 int _launch(char **args, char **envp);
 int _execute(char **args, char **envp);
 char *read_line(void);

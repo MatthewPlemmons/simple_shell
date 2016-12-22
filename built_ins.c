@@ -41,7 +41,8 @@ int _help(void)
 		{"cd", _cd},
 		{"help", _help},
 		{"exit", my_exit},
-		{"env", _env}
+		{"env", _env},
+		{"history", _history}
 	};
 
 	n = N_BUILTINS(builtins, builtins[0]);
@@ -68,6 +69,7 @@ int my_exit(void)
  * _execute - looks for built ins or launches program.
  *
  * @args: list of arguments
+ * @envp: enviroment pointer?
  * Return: returns 1 to continue running, 0 if exit.
  */
 int _execute(char **args, char **envp)
@@ -78,7 +80,8 @@ int _execute(char **args, char **envp)
 		{"cd", _cd},
 		{"help", _help},
 		{"exit", my_exit},
-		{"env", _env}
+		{"env", _env},
+		{"history", _history}
 	};
 
 	if (args[0] == NULL)

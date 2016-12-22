@@ -4,7 +4,7 @@
  * findfile - searches each directory in path for the file to execute.
  * @path: all the directory pathways to search.
  * @args: the executable to search for.
- * Returns: string containing the absolute path of the executable.
+ * Return: string containing the absolute path of the executable.
  * Or NULL, if search fails.
  */
 char *findfile(char **path, char *args)

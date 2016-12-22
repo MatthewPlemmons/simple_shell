@@ -85,7 +85,7 @@ char **getpath(void)
 		if (_strstr(environ[i], "PATH"))
 		{
 			path = environ[i];
-			return(parsepath(path += size));
+			return (parsepath(path += size));
 		}
 	}
 	perror("PATH not found");
