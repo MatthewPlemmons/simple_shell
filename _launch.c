@@ -8,21 +8,22 @@
  */
 int _launch(char **args, char **envp)
 {
-	char **path;
+	char **path, *file;
 	pid_t pid;
 	int status;
 
+	if (_strchr(*args, '/') == NULL)
+	{
+		path = getpath();
+		file = findfile(path, args[0]);
+	}
+	else
+		file = *args;
 
-	/* in order for execve to run external functions it must
-	   be given full path of the file */
-	/*
-	path = getpath();
-	file = findfile(args[0], path);
-	*/
 	pid = fork();
 	if (pid == 0)
 	{
-		if (execve(args[0], args, envp) == -1)
+		if (execve(file, args, envp) == -1)
 			perror("exevce failed");
 
 		exit(EXIT_FAILURE);
