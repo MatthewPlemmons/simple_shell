@@ -27,12 +27,6 @@ typedef struct builtin_t
 	int (*f)();
 } builtin_t;
 
-typedef struct pathdir_t
-{
-	char *dir;
-	struct pathdir_t *next;
-} pathdir_t;
-
 extern char **environ;
 
 int write_history(char *text_content);
