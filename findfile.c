@@ -21,6 +21,7 @@ char *findfile(char **path, char *args)
 		if (pathstr == NULL)
 		{
 			perror("Allocation error");
+			_freemem(path);
 			exit(EXIT_FAILURE);
 		}
 		_strcpy(pathstr, path[i]);
