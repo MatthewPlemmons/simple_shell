@@ -1,6 +1,10 @@
 #include "shell.h"
 
-
+/**
+ * _freemem - frees pointer array.
+ * @dirs: pointer array.
+ * Return: void
+ */
 void _freemem(char **dirs)
 {
 	while (*dirs++)
@@ -10,7 +14,11 @@ void _freemem(char **dirs)
 	free(dirs);
 }
 
-
+/**
+ * arr_alloc - allocate array of pointers.
+ * @n_ptrs: number of pointers in array.
+ * Return: pointer array.
+ */
 char **arr_alloc(int n_ptrs)
 {
 	char **arr_ptrs;
@@ -26,7 +34,11 @@ char **arr_alloc(int n_ptrs)
 
 }
 
-
+/**
+ * parsepath - get directories from PATH and store them in array.
+ * @p: PATH string.
+ * Return: array of strings.
+ */
 char **parsepath(char *p)
 {
 	int i, j, n_ptrs;
@@ -57,6 +69,11 @@ char **parsepath(char *p)
 	return (dirs);
 }
 
+
+/**
+ * getpath - finds PATH in environment.
+ * Return: array of directories, or NULL.
+ */
 char **getpath(void)
 {
 	unsigned int i, size;
