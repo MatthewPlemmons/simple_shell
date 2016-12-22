@@ -29,6 +29,7 @@ typedef struct builtin_t
 
 extern char **environ;
 
+int give_up(void);
 int write_history(char *text_content);
 int _cd(char **args);
 int _help(void);

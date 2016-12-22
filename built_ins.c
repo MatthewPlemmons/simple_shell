@@ -42,7 +42,8 @@ int _help(void)
 		{"help", _help},
 		{"exit", my_exit},
 		{"env", _env},
-		{"history", _history}
+		{"history", _history},
+		{"giveup", give_up}
 	};
 
 	n = N_BUILTINS(builtins, builtins[0]);
@@ -81,7 +82,8 @@ int _execute(char **args, char **envp)
 		{"help", _help},
 		{"exit", my_exit},
 		{"env", _env},
-		{"history", _history}
+		{"history", _history},
+		{"giveup", give_up}
 	};
 
 	if (args[0] == NULL)
