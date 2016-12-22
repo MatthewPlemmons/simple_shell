@@ -8,4 +8,7 @@ Current built-in commands:
 3. exit - will exit the shell when you are done.
 4. env - prints out the current shell varriables.
 
+You can also specify commands to run using the full path:
+example: /usr/bin/ls
+
 to be continued...

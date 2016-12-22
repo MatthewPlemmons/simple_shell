@@ -8,7 +8,8 @@
  */
 int _launch(char **args, char **envp)
 {
-	char **path;
+
+	/* char **path; */
 	pid_t pid;
 	int status;
 
