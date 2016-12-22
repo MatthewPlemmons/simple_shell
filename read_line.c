@@ -17,10 +17,7 @@ char *read_line(void)
 	buffer = malloc(sizeof(char) * bufsize);
 
 	if (!buffer)
-	{
-		fprintf(stderr, "$: allocation error\n");
 		exit(EXIT_FAILURE);
-	}
 	while (1)
 	{
 		c = getchar();

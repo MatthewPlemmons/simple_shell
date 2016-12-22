@@ -12,17 +12,17 @@ int _history(void)
 	int c;
 
 	fp = fopen("/tmp/.simple_shell_history", "r");
-	while(1)
+	while (1)
 	{
 		c = fgetc(fp);
-		if(feof(fp))
+		if (feof(fp))
 		{
 			break;
 		}
 		printf("%c", c);
 	}
 	fclose(fp);
-	return(1);
+	return (1);
 }
 
 /**
