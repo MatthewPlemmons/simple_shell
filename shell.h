@@ -9,6 +9,9 @@
 #include <string.h>
 #include <sys/wait.h>
 #include <linux/limits.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+
 
 /**
  * struct builtin_t - stores pointers to builtin functions
@@ -30,7 +33,7 @@ typedef struct pathdir_t {
 
 extern char **environ;
 
-char **arr_alloc(char *p);
+char **arr_alloc(int n);
 char **parsepath(char *p);
 char **getpath(void);
 
@@ -42,11 +45,17 @@ int _launch(char **args, char **envp);
 int _execute(char **args, char **envp);
 char *read_line(void);
 char **split_line(char *line);
+char *findfile(char **path, char *args);
 
 /* _strings.c */
 char *_strchr(char *s, char c);
 char *_strstr(char *s, char *substr);
 char *_strndup(char *s, int n);
+char *_strcat(char *dest, char *src);
 int _strlen(char *s);
+
+char *_strcpy(char *dest, char *src);
+char *_memset(char *s, char b, unsigned int n);
+
 
 #endif
