@@ -28,7 +28,6 @@ int _history(void)
 /**
  * write_history - writes text to end of file..
  *
- * @filename: file to be written to.
  * @text_content: text to be written to file.
  * Return: 1 on success, -1 on failure.
  **/

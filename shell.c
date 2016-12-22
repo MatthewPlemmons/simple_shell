@@ -3,6 +3,9 @@
 /**
  * main - shell for taking user commands
  *
+ * @argc: argument count.
+ * @argv: the arguments.
+ * @envp: envroment pointer?
  * Return: int 0, upon exit.
  */
 

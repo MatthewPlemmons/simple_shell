@@ -69,6 +69,7 @@ int my_exit(void)
  * _execute - looks for built ins or launches program.
  *
  * @args: list of arguments
+ * @envp: enviroment pointer?
  * Return: returns 1 to continue running, 0 if exit.
  */
 int _execute(char **args, char **envp)

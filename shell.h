@@ -28,7 +28,8 @@ typedef struct builtin_t
 } builtin_t;
 
 
-typedef struct pathdir_t {
+typedef struct pathdir_t
+{
 	char *dir;
 	struct pathdir_t *next;
 } pathdir_t;
