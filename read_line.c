@@ -10,12 +10,11 @@
 char *read_line(void)
 {
 	int bufsize, position, c;
-	char *buffer, *temp, *filename;
+	char *buffer, *temp;
 
 	position = 0;
 	bufsize = 1024;
 	buffer = malloc(sizeof(char) * bufsize);
-	filename = ".simple_shell_history";
 
 	if (!buffer)
 	{
@@ -28,13 +27,8 @@ char *read_line(void)
 		if (c == EOF || c == '\n')
 		{
 			buffer[position] = '\0';
-			if (append_to_file(filename , buffer) >= 1)
-				append_to_file(filename , "\n");
-			else
-			{
-				create_file(filename , buffer);
-				append_to_file(filename, "\n");
-			}
+			write_history(buffer);
+			write_history("\n");
 			return (buffer);
 		}
 		else
