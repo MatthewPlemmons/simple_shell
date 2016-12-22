@@ -17,7 +17,6 @@ char *_strchr(char *s, char c)
 	return (NULL);
 }
 
-
 /**
  * _strstr - locates a substring.
  * @haystack: string to search.
@@ -44,7 +43,6 @@ char *_strstr(char *haystack, char *needle)
 	}
 	return (NULL);
 }
-
 
 /**
  * _strndup - allocates memory and duplicates n bytes of string.
@@ -73,6 +71,27 @@ char *_strndup(char *str, int n)
 	return (a);
 }
 
+/**
+ * _strcat - concatenate two strings.
+ * @dest: string input.
+ * @src: string to concatenate to dest.
+ * Return: char pointer to resulting string dest.
+ */
+char *_strcat(char *dest, char *src)
+{
+	char *s;
+
+	s = dest;
+	while (*dest != '\0')
+		dest++;
+
+	while (*src != '\0')
+		*dest++ = *src++;
+
+	*dest = '\0';
+	return (s);
+
+}
 
 /**
  * _strlen - find string length.

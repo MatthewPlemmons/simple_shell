@@ -26,6 +26,7 @@ typedef struct builtin_t
 	int (*f)();
 } builtin_t;
 
+
 typedef struct pathdir_t {
 	char *dir;
 	struct pathdir_t *next;
@@ -33,9 +34,6 @@ typedef struct pathdir_t {
 
 extern char **environ;
 
-char **arr_alloc(int n);
-char **parsepath(char *p);
-char **getpath(void);
 
 int _cd(char **args);
 int _help(void);
@@ -47,6 +45,11 @@ char *read_line(void);
 char **split_line(char *line);
 char *findfile(char **path, char *args);
 
+/* _getpath.c */
+char **arr_alloc(int n);
+char **parsepath(char *p);
+char **getpath(void);
+
 /* _strings.c */
 char *_strchr(char *s, char c);
 char *_strstr(char *s, char *substr);
@@ -54,8 +57,8 @@ char *_strndup(char *s, int n);
 char *_strcat(char *dest, char *src);
 int _strlen(char *s);
 
+/* _strings2.c */
 char *_strcpy(char *dest, char *src);
 char *_memset(char *s, char b, unsigned int n);
-
 
 #endif
