@@ -1,7 +1,7 @@
 #include "shell.h"
 
-/*
-void _freearr(char **dirs)
+
+void _freemem(char **dirs)
 {
 	while (*dirs++)
 	{
@@ -9,18 +9,11 @@ void _freearr(char **dirs)
 	}
 	free(dirs);
 }
-*/
 
-char **arr_alloc(char *p)
+
+char **arr_alloc(int n_ptrs)
 {
 	char **arr_ptrs;
-	int i, n_ptrs;
-
-	n_ptrs = 0;
-	for (i = 0; p[i]; i++)
-		if (p[i] == ':')
-			n_ptrs++;
-	n_ptrs++;
 
 	arr_ptrs = malloc(sizeof(char *) * n_ptrs + 1);
 	if (!arr_ptrs)
@@ -36,14 +29,19 @@ char **arr_alloc(char *p)
 
 char **parsepath(char *p)
 {
-	int i, j, size;
+	int i, j, n_ptrs;
 	char **dirs;
 	char *curr, *tmp;
 
-	dirs = arr_alloc(p);
-	size = sizeof(dirs) / sizeof(dirs[0]);
+	n_ptrs = 0;
+	for (i = 0; p[i]; i++)
+		if (p[i] == ':')
+			n_ptrs++;
+	n_ptrs++;
+
+	dirs = arr_alloc(n_ptrs);
 	curr = p;
-	for (i = 0; i < size; i++)
+	for (i = 0; i < n_ptrs; i++)
 	{
 		tmp = curr;
 		for (j = 1; *curr++; j++)
