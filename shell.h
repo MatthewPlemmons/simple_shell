@@ -46,6 +46,7 @@ char **split_line(char *line);
 char *findfile(char **path, char *args);
 
 /* _getpath.c */
+void _freemem(char **dirs);
 char **arr_alloc(int n);
 char **parsepath(char *p);
 char **getpath(void);

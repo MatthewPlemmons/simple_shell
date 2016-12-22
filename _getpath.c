@@ -1,7 +1,7 @@
 #include "shell.h"
 
-/*
-void _freearr(char **dirs)
+
+void _freemem(char **dirs)
 {
 	while (*dirs++)
 	{
@@ -9,7 +9,7 @@ void _freearr(char **dirs)
 	}
 	free(dirs);
 }
-*/
+
 
 char **arr_alloc(int n_ptrs)
 {
