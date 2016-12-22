@@ -17,8 +17,8 @@
 /**
  * struct builtin_t - stores pointers to builtin functions
  *
- * @name:
- * @f:
+ * @name: name of builtin.
+ * @f: function pointer to builtin.
  *
  */
 typedef struct builtin_t
@@ -27,15 +27,7 @@ typedef struct builtin_t
 	int (*f)();
 } builtin_t;
 
-
-typedef struct pathdir_t
-{
-	char *dir;
-	struct pathdir_t *next;
-} pathdir_t;
-
 extern char **environ;
-
 
 int write_history(char *text_content);
 int _cd(char **args);
