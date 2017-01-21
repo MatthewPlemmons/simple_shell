@@ -1,7 +1,14 @@
 # Simple Shell
 
-A shell application project for Holberton School.   
+A shell application built during a project for Holberton School.  The application as written entirely in emacs and compiled on Ubuntu 14.04 LTS using `gcc 4.8.4`.
 
+
+To run the shell:
+`git clone https://github.com/MatthewPlemmons/simple_shell.git`
+`gcc -Wall -Werror -Wextra -pedantic *.c -o hsh`
+`./hsh`
+
+This should execute the shell, which will then print a command prompt and wait for user input.
 
 Available built-in commands:
 - `help` prints list of avaialable builtin commands. 
