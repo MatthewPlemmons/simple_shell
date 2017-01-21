@@ -1,12 +1,12 @@
 # Simple Shell
----
+
 A shell application project for Holberton School.   
 
 
-Current built-in commands:
+Available built-in commands:
 - `help` prints list of avaialable builtin commands. 
 - `cd` changes the current working directory within the shell
 - `env` prints out the current shell varriables.
 - `exit` exits the shell.
 
-The shell scans PATH to find other commands or programs installed on the system as well.
+The shell scans PATH to find any other commands or programs installed on the system as well.
