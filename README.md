@@ -1,10 +1,13 @@
 ## Simple Shell
 
-A shell application built during a project for Holberton School.  The application as written entirely in emacs and compiled on Ubuntu 14.04 LTS using `gcc 4.8.4`.
+A shell application built during a project for [Holberton School][1].  The application as written entirely in emacs and compiled on Ubuntu 14.04 LTS using `gcc 4.8.4`.
+
+[1]: https://www.holbertonschool.com/
 
 ### Installation
 ```
 git clone https://github.com/MatthewPlemmons/simple_shell.git
+cd simple_shell
 gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 ./hsh
 ```
