@@ -18,6 +18,7 @@ int _launch(char **args, char **envp)
 	{
 		path = getpath();
 		file = findfile(path, args[0]);
+		/*_freemem(path);*/
 	}
 	else
 		file = *args;
@@ -26,7 +27,7 @@ int _launch(char **args, char **envp)
 	if (pid == 0)
 	{
 		if (execve(file, args, envp) == -1)
-			perror("exevce failed");
+			perror("Command not found");
 
 		exit(EXIT_FAILURE);
 	}
