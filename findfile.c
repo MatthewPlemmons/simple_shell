@@ -16,7 +16,7 @@ char *findfile(char **path, char *args)
 	for (i = 0; path[i]; i++)
 	{
 		size = _strlen(path[i]) + 1;
-		cmd_len = _strlen(args);
+		cmd_len = _strlen(args) + 1;
 		pathstr = malloc(sizeof(char) * size + cmd_len);
 		if (pathstr == NULL)
 		{
