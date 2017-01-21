@@ -1,15 +1,12 @@
-# simple_shell
-A simple recreation of the shell, as a project for Holberton School.
+# Simple Shell
+---
+A shell application project for Holberton School.   
 
 
 Current built-in commands:
-1. help - will give you the list of avaialable commands. 
-2. cd - will change the current directory within the shell
-3. exit - will exit the shell when you are done.
-4. env - prints out the current shell varriables.
-5. giveup - WARNING do NOT use. fork bomb.
+- `help` prints list of avaialable builtin commands. 
+- `cd` changes the current working directory within the shell
+- `env` prints out the current shell varriables.
+- `exit` exits the shell.
 
-You can also specify commands to run using the full path:
-example: /usr/bin/ls
-
-to be continued...
+The shell scans PATH to find other commands or programs installed on the system as well.
