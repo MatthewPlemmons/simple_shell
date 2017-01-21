@@ -4,9 +4,11 @@ A shell application built during a project for Holberton School.  The applicatio
 
 
 To run the shell:
-```git clone https://github.com/MatthewPlemmons/simple_shell.git
+```bash
+git clone https://github.com/MatthewPlemmons/simple_shell.git
 gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
-./hsh```
+./hsh
+```
 
 This should execute the shell, which will then print a command prompt and wait for user input.
 
