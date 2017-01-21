@@ -23,13 +23,13 @@ char **arr_alloc(int n_ptrs)
 {
 	char **arr_ptrs;
 
-	arr_ptrs = malloc(sizeof(char *) * n_ptrs + 1);
+	arr_ptrs = malloc((sizeof(char *) * n_ptrs) + sizeof(char *));
 	if (!arr_ptrs)
 	{
 		perror("Memory allocation failed");
 		exit(EXIT_FAILURE);
 	}
-	arr_ptrs[n_ptrs + 1] = NULL;
+	arr_ptrs[n_ptrs] = NULL;
 	return (arr_ptrs);
 
 }

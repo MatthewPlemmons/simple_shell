@@ -59,7 +59,7 @@ char *_strndup(char *str, int n)
 	if (!str)
 		return (NULL);
 
-	a = malloc(sizeof(char) * n + 1);
+	a = malloc(sizeof(char) * (n + 1));
 	if (!a)
 		return (NULL);
 

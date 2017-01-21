@@ -16,9 +16,8 @@ int main(int argc, char **argv, char **envp)
 	int status;
 	(void) argc, (void) argv;
 
-	printf("Welcome to our attempt at a simple shell.\n\n");
 	do {
-		printf(">$ ");
+		printf("> ");
 		line = read_line();
 		args = split_line(line);
 		status = _execute(args, envp);
