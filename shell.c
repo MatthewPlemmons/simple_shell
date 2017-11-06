@@ -11,7 +11,7 @@
 
 int main(int argc, char **argv, char **envp)
 {
-	char *line;
+	char **line;
 	char **args;
 	int status;
 	(void) argc, (void) argv;
@@ -19,10 +19,10 @@ int main(int argc, char **argv, char **envp)
 	do {
 		printf("> ");
 		line = read_line();
-		args = split_line(line);
+		args = split_line(*line);
 		status = _execute(args, envp);
 
-		free(line);
+		free(*line);
 		free(args);
 
 	} while (status);

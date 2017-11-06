@@ -49,7 +49,8 @@ int _env(void);
 int _history(void);
 int _launch(char **args, char **envp);
 int _execute(char **args, char **envp);
-char *read_line(void);
+char **read_line(void);
+ssize_t _getline(char **lineptr, size_t *n);
 char **split_line(char *line);
 char *findfile(char **path, char *args);
 

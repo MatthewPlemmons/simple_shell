@@ -1,5 +1,8 @@
 #include "shell.h"
 
+#define INIT_SIZE 120
+#define MAX_SIZE 1024
+
 /**
  * read_line - gets input from stdin.
  * Description: temp replacment for getline(). if buffer is filled, reallocate
@@ -7,44 +10,74 @@
  *
  * Return: returns the line it read from stdin.
  */
-char *read_line(void)
+char **read_line(void)
 {
-	int bufsize, position, c;
-	char *buffer, *temp;
+	char **lineptr;
+	size_t *n;
 
-	position = 0;
-	bufsize = 1024;
-	buffer = malloc(sizeof(char) * bufsize);
-
-	if (!buffer)
+	n = malloc(sizeof(size_t));
+	if (!n)
+	{
+		free(n);
 		exit(EXIT_FAILURE);
+	}
+	*n = INIT_SIZE;
+
+	lineptr = malloc(sizeof(char *));
+	if (lineptr == NULL)
+		exit(EXIT_FAILURE);
+
+	*lineptr = (char *)malloc(*n);
+	if (*lineptr == NULL)
+	{
+		free(*lineptr);
+		exit(EXIT_FAILURE);
+	}
+
+	if (_getline(lineptr, n) < 0)
+	{
+		exit(EXIT_FAILURE);
+	}
+	return (lineptr);
+}
+
+/**
+ *
+ *
+ *
+ */
+ssize_t _getline(char **lineptr, size_t *n)
+{
+	size_t new_len;
+	char c, *curr, *new_lineptr;
+
+	curr = *lineptr;
 	while (1)
 	{
 		c = getchar();
-		if (c == EOF || c == '\n')
+		if (c == EOF)
 		{
-			buffer[position] = '\0';
-			write_history(buffer);
-			write_history("\n");
-			return (buffer);
+			if (curr == *lineptr)
+				return (-1);
+			break;
 		}
-		else
-			buffer[position] = c;
-		position++;
-		if (position >= bufsize)
+
+		if ((*lineptr + *n - curr) < 2)
 		{
-			temp = malloc(sizeof(char) * bufsize);
-			temp = buffer;
-			bufsize = bufsize + 1024;
-			free(buffer);
-			buffer = malloc(sizeof(char) * bufsize);
-			buffer = temp;
-			free(temp);
-			if (!buffer)
-			{
-				fprintf(stderr, "$: allocation error\n");
-				exit(EXIT_FAILURE);
-			}
+			if (MAX_SIZE / 2 < *n)
+				return (-1);
+			new_len = *n * 2;
+			new_lineptr = realloc(*lineptr, new_len);
+			if (!new_lineptr)
+				return (-1);
+			*lineptr = new_lineptr;
+			*n = new_len;
 		}
+
+		*curr++ = c;
+		if (c == '\n')
+			break;
 	}
+	*curr = '\0';
+	return (ssize_t)(curr - *lineptr);
 }
