@@ -70,7 +70,7 @@ int _strlen(char *s);
 /* _strings2.c */
 char *_strcpy(char *dest, char *src);
 char *_memset(char *s, char b, unsigned int n);
-void *_memcpy(char *dest, char *src, size_t n);
+void _memcpy(char *dest, char *src, size_t n);
 void *_realloc(char *ptr, size_t size);
 
 #endif

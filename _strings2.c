@@ -45,7 +45,7 @@ char *_memset(char *s, char b, unsigned int n)
  *
  *
  */
-void *_memcpy(char *dest, char *src, size_t n)
+void _memcpy(char *dest, char *src, size_t n)
 {
 	size_t i;
 
@@ -55,7 +55,6 @@ void *_memcpy(char *dest, char *src, size_t n)
 			exit(EXIT_FAILURE);
 		dest[i] = src[i];
 	}
-	return (dest);
 }
 
 
