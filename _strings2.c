@@ -39,3 +39,39 @@ char *_memset(char *s, char b, unsigned int n)
 	}
 	return (s - i);
 }
+
+/**
+ *
+ *
+ *
+ */
+void *_memcpy(char *dest, char *src, size_t n)
+{
+	size_t i;
+
+	for (i = 0; i < n; ++i)
+	{
+		if (&dest[i] == &src[i])
+			exit(EXIT_FAILURE);
+		dest[i] = src[i];
+	}
+	return (dest);
+}
+
+
+/**
+ *
+ *
+ *
+ *
+ */
+void *_realloc(char *ptr, size_t size)
+{
+	void *tmp;
+
+	tmp = ptr;
+	ptr = malloc(sizeof(char) * size);
+	_memcpy(ptr, tmp, size / 2);
+	free(tmp);
+	return (ptr);
+}

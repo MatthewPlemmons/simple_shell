@@ -67,7 +67,7 @@ ssize_t _getline(char **lineptr, size_t *n)
 			if (MAX_SIZE / 2 < *n)
 				return (-1);
 			new_len = *n * 2;
-			new_lineptr = realloc(*lineptr, new_len);
+			new_lineptr = _realloc(*lineptr, new_len);
 			if (!new_lineptr)
 				return (-1);
 			*lineptr = new_lineptr;
