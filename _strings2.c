@@ -70,7 +70,7 @@ void *_realloc(char *ptr, size_t size)
 
 	tmp = ptr;
 	ptr = malloc(sizeof(char) * size);
-	_memcpy(ptr, tmp, size / 2);
+	_memcpy(ptr, tmp, size);
 	free(tmp);
 	return (ptr);
 }
